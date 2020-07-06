@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>
+    <style>
+        /* CSS Reset */
+        *{
+            margin:0px;
+            padding:0px;
+            border:0px；
+        }
+
+        /* header */
+        .header{
+           vertical-align: top;
+           background-color: black;
+           display: flex;
+           color: white;
+           justify-content: space-around;
+           align-items: center;
+           padding:10px;
+        }
+        .header img{
+            height:30px;
+            margin: 0px 5px 0px 0px;
+            border-radius: 50%;
+        }
+        .phone{
+            font-size:30px;
+            display: flex;
+            align-items: center;
+        }
+        .phone i{
+            color:orange;
+            padding:10px;
+            font-size: 30px;
+        }
+        .phone a{
+            color:white;
+            text-decoration: none;
+
+        }
+        .phone a:hover{
+            color:orange;
+            transition: 0.5s;
+            cursor:initial;
+        }
+
+        /* nav */
+        .nav{
+            display: flex; 
+            width: 100%;      
+            background-color: #fff;   
+            justify-content: space-evenly;
+            text-align: center;
+            padding: 20px 0px;
+            position: sticky;
+            top:0;
+            vertical-align: top;
+            z-index: 3;
+        }
+        .nav .logo{
+            display: flex;
+        }
+        .nav .logo h1{
+           margin:10px;
+           font-size: 45px;
+        }
+        .nav .menu a{
+            color: #ccc;
+            margin:10px 15px;
+            text-decoration: none;
+            font-size: 25px;
+        }
+        .nav .menu a:hover{
+            border-bottom: orange 2px solid;
+            transition: 0.1s;
+        }
+        .nav .donateButton a{
+            width: 130px;            
+            color:orange;
+            border: solid orange 2px;
+            padding:10px 30px;
+            text-decoration: none;
+        }
+        .nav .donateButton a:hover{
+            color:white;
+            background-color: turquoise;
+            border: solid turquoise 1px;
+            transition: 0.3s;
+        }
+
+        /* 中間貓貓圖 */
+        .middleCat{
+           background-image: url("pic/catBackground.jpeg");
+           background-size: 100% 100%;
+           height:400px;  
+           padding: 100px 100px;
+        }
+        .middleCat a{           
+            text-decoration: none;
+            color:white;
+            background-color: orange;
+            padding:25px;
+        }
+        .middleCat a:hover{           
+            background-color: black;
+            transition: 0.3s;
+        }
+        .middleCat .text{
+            padding-left: 100px;
+            text-align: left;
+        }
+        #Animals_Need{
+            display: block;
+            font-size: 50px;
+        }
+        #Your_Help{
+            display: block;
+            color:paleturquoise;
+            font-size: 100px;
+        }
+        #You_can_chip_in_with_your_money_effort{
+            display: block;
+            font-size: 30px;
+            margin-bottom: 50px;
+        }
+        /* 中間女人圖 */
+        .middleWoman{
+            display: flex;
+            align-items: center;
+            Justify-content : flex-start;
+            text-align: left;
+            margin: 0px 100px;
+        }
+        #About_us{
+            font-size: 50px;   
+            margin-bottom: 30px;  
+        }
+        #What_makes_us{
+            font-size: 35px;
+            color:paleturquoise;
+            margin-bottom: 30px;
+        }
+        #If_It{
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
+        .middleWoman a{          
+            text-decoration: none;
+            color:white;
+            background-color: orange;
+            padding:25px;
+        }
+        .middleWoman a:hover{          
+            background-color: black;
+            transition: 0.3s;
+        }
+
+        /* How Can You Help */
+        .How_Can_You_Help{
+            text-align: center;
+            background-color: #eee;
+            padding: 75px 0px;
+        }
+        .How_Can_You_Help .threeAnchor{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 0px 120px;
+        } 
+        .How_Can_You_Help h3{
+           font-size: 50px;
+        }
+        .How_Can_You_Help p{
+            font-size: 30px;
+            color:cornflowerblue;
+            margin-bottom: 50px;
+        }
+        .How_Can_You_Help .text{
+           margin:10px;
+        }
+        .How_Can_You_Help a{
+            
+            display: block;
+            text-decoration: none;
+            margin: 20px;
+            color: #fff;
+            font-size: 40px;
+            margin-top: 450px;           
+        }
+        .How_Can_You_Help .first{
+          background-image: url(pic/sleepCat.jpeg);
+          z-index: 0;
+          width: 360px;
+          height:500px;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+         .How_Can_You_Help .first:hover{
+          filter: brightness(50%);
+          transition: 0.2s;
+        }
+        .How_Can_You_Help .second{
+          background-image:url(pic/littleGirl.jpeg);
+          width: 360px;
+          height:500px;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+        .How_Can_You_Help .second:hover{
+            filter: brightness(50%);
+            transition: 0.2s;
+        }
+        .How_Can_You_Help .third{
+          background-image: url(pic/womanWithCat.jpeg);
+          width: 360px;
+          height:500px;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+        .How_Can_You_Help .third:hover{
+            filter: brightness(50%);
+            transition: 0.2s;
+        }
+        .How_Can_You_Help a:hover{
+            color: orange;          
+            transition: 0.3s;
+        }
+        /* volunteer */
+        .volunteer{
+            display: flex;
+            justify-content:space-evenly;
+            margin-top: 150px;
+        }
+        .volunteer .left{
+            text-align: right;
+            font-size: 40px;
+        }
+        .volunteer .right img{
+            margin: 10px 0px;
+        }
+        .volunteer .right p{
+            margin : 20px 0px 40px 0px;
+        }
+        .volunteer .right a{
+            text-decoration: none;
+            color:white;
+            background-color: orange;
+            padding: 15px 60px;
+        }
+        .volunteer .right a:hover{
+            background-color: black;
+            transition: 0.3s;
+        }
+
+        /*  upcoming event */
+        .upcomingevent{
+            background-image: url("pic/asset 13.jpeg");
+            text-align: center;
+            margin: 100px;
+            padding: 100px 5px;
+        }
+        .upcomingevent .text{
+            margin-bottom: 50px;
+        }
+        #upcomingevent{
+            font-size: 40px;
+        }
+        #kennl{
+            font-size:50px;
+            color:cornflowerblue;
+        }
+        .upcomingevent p{
+            font-size: 30px;
+            margin: 0px 0px 0px 20px;
+        }
+        .upcomingevent .btn a{
+             text-decoration: none;
+             color:white;
+             font-size: 20px;
+             padding: 20px 40px;
+             margin: 10px;
+             background-color: orange;
+        }
+        .upcomingevent .btn a:hover{
+            background-color: paleturquoise;
+            transition: 0.3s;
+        }
+        /* 中間兩隻狗狗 */
+        .twoDog {
+            background-image: url(pic/twodogs.jpeg);
+            background-attachment: fixed;
+            width: 100%;
+            height:600px;
+        }   
+
+        .orangeTop {
+            background-color: orange;
+            color:orange;
+            width: 100%;
+            height: 28px;
+        }
+
+        /* latest News */
+        .latestNews{
+            text-align: center;
+        }
+
+        .latestNews .text{
+            margin-top: 50px;
+        }
+        .latestNews .video{
+            margin: auto;
+            margin-top : 70px;
+        }
+        #updates{
+            font-size: 40px;
+            margin : 10px 0px;
+        }
+        #see_a_video{
+            font-size: 30px;
+            margin : 10px 0px;
+            color:aquamarine;
+        }
+
+        /* twoPic */
+        .twoPic{
+            margin:auto;
+            height:380px;
+            width: 1200px;
+            margin-top: 50px;
+            margin-bottom: 100px;
+            padding:0px;
+            display:flex;
+            text-align: center;
+            justify-content: space-evenly;
+        }
+        .twoPic .leftMan{
+            background-image: url("pic/asset 16.jpeg");
+            width:550px;
+            padding:10px;
+            flex-direction: column;    
+        }
+        .twoPic .rightWoman{
+            background-image: url("pic/asset 17.jpeg");
+            width:550px;
+            padding:10px;
+            flex-direction: column; 
+        }
+        .twoPic .leftMan img{            
+               border-radius: 50%;
+        }
+        .twoPic .rightWoman img{
+            border-radius: 50%;
+        }
+        .twoPic .leftMan .firstLine{
+            color:white;
+            font-size: 18px;
+        }
+        .twoPic .rightWoman .firstLine{
+            color: white;
+            font-size: 18px;
+        }
+        .twoPic .leftMan a{
+            text-decoration: none;
+            color:white;
+            font-size: 18px;
+        }
+        .twoPic .rightWoman a{
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        #New_Advance{
+            display: block;
+            color:white;
+            font-size: 30px;
+            margin:15px;
+        }
+        #Do_Dogs{
+            display: block;
+            color:white;
+            font-size: 30px;
+            margin:15px;
+        }
+        .twoPic .leftMan a:hover{
+            color:orange;
+            transition: 0.3s;
+        }
+        #New_Advance:hover{
+            color: orange;
+            transition: 0.3s;
+        }   
+        .twoPic .rightWoman a:hover{
+            color: orange;
+            transition: 0.3s;
+        }
+        #Do_Dogs:hover{
+            color: orange;
+            transition: 0.3s;
+        }
+        /* four Icons */
+        .fourIcons{
+            margin:auto;
+            background-image: url("pic/asset 18.jpeg");
+            background-position: center;
+            background-repeat: no-repeat;
+            display:flex;
+            text-align: center;
+            padding:50px;
+            justify-content: center;
+            justify-content: space-around;
+        }
+        .fourIcons img{
+            margin-top: 100px;
+        }
+        .fourIcons h3{
+            color:white;
+            font-size: 40px;
+            margin: 20px 0px;
+        }
+        .fourIcons p{
+            color:white;
+            font-size: 30px;
+            margin: 20px 0px;
+        }
+
+        /* See Our Adorable Pets on Instagram */
+        #See_Out_Adorable{
+            text-align: center;
+            color:#444;
+            font-size: 50px;
+            padding: 60px 0px;
+        }
+
+        /* four pictures below */
+        .fourPics{
+            margin: auto;
+            display: flex;
+        }
+
+        .fourPic a:hover{
+              /*  要有圖片覆蓋效果 */
+              transition: 0.3s;
+        }
+        /* footer */
+        .footer{
+            text-align: center;
+            background-color: black;
+            color:white;
+            padding:50px;       
+        }
+        .footer div{
+            margin: 30px;
+            align-items: center;    
+        }
+        .footer a{
+            text-decoration: none;
+            color:white;
+        }
+        .footer #phoneNumber:hover{
+            color: orange;
+            transition: 0.3s;
+        }
+        .footer #copyRight:hover{
+            color:orange;
+            transition: 0.3s;
+        }
+        .footer #Anilove{
+            font-size: 40px;
+        }
+        .footer a, p, img{
+            margin: 10px 0px;
+            vertical-align: center;
+        }
+         
+        .footer img{
+            margin : 15px 5px 0px 0px;
+        }
+        .footer .link img{
+            height: 50px;
+            background-color: black;
+        }
+        /* phone Icon */
+        .phoneIcon i{     
+            font-size: 40px;                            
+            padding: 30px;
+            color:orange;
+            background-color: #fff;
+            border-radius: 50%;
+            position: fixed;
+            left:50px;
+            bottom:50px;
+            box-shadow:4px 3px 3px rgba(20%,20%,40%,0.5);
+            transform: rotate(90deg);
+        }
+        .phoneIcon i:hover{     
+            filter: grayscale(40%);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- header -->
+    <div class="header">
+        <div class="phone">
+            <i class="fas fa-phone"></i>
+            <p>Toll-free : </p>
+            <a href="#"> (123) 456-7890</a>
+        </div>
+        <div class="linkIcon">
+            <a href="#"><img src="pic/twitter.png" alt=""></a>
+            <a href="#"><img src="pic/facebook.png" alt=""></a>
+            <a href="#"><img src="pic/github.png" alt=""></a>
+            <a href="#"><img src="pic/linkedin.png" alt=""></a>
+        </div>
+    </div>
+
+    <!-- nav -->
+    <div class="nav" id="navbar">
+        <div class="logo">
+            <img src="pic/logo.png" alt="">
+            <h1>Anilove</h1>
+        </div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Events</a>
+            <a href="#">News</a>
+            <a href="#">Contacts</a>
+        </div>
+        <div class="donateButton">
+            <a href="#">DONATE NOW !</a>
+        </div>
+    </div>
+
+    <!-- 中間貓貓圖 -->
+    <div class="middleCat">
+        <div class="text">
+            <p id="Animals_Need">Animals Need</p>
+            <p id="Your_Help">Your Help !</p>
+            <p id="You_can_chip_in_with_your_money_effort">You can chip in with your money & effort!</p>
+            <a href="#">DONATE NOW !</a>
+        </div>
+    </div>
+
+    <!-- 中間女人圖 -->
+    <div class="middleWoman">
+        <img src="pic/womanWithDog.jpeg" alt="">
+        <div class="text">
+            <p id="About_us">About Us</p>
+            <p id="What_makes_us">What Makes Us Care About Pets?</p>
+            <p id="If_It">If it wasn’t for our founder’s childhood spent on a ranch in northern Texas, surrounded by domestic animals and pets all the time till she went to college – there might have been no Anilove animal shelter now. So as soon as she graduated with her Veterinary degree 12 years ago, she already knew what she will be doing for a living.<br><br>
+            
+             All in all, with thousands of animals saved off the streets and cared for every year, we hope to encourage much more pet adoptions to happen!</p>
+             <a href="#">LEARN MORE</a>
+        </div>
+    </div>
+    <!-- How Can You Help -->
+    <div class="How_Can_You_Help">
+        <div class="text">
+               <h3>How Can You Help </h3>
+               <p>There Are Countless Ways You Can Join In & Help Us !</p>
+        </div>
+        <div class="threeAnchor">
+            <div class="first">
+                <a href="#">Volunteer</a>
+            </div>
+            <div class="second">
+                <a href="#">Adopt</a>
+            </div>
+            <div class="third">
+                <a href="#">Sponser</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Volunteer to Save Animals Now -->
+    <div class="volunteer">
+      <div class="left">
+        <p>Volunteer to Save</p>
+        <p>Animals Now !</p>
+        <img src="pic/oldwomanwithdog.jpeg" alt="">
+      </div>
+      <div class="right">
+        <img src="pic/twohumanwithdog.jpeg" alt="">
+        <p>With so many pets less fortunate than your cat and dog, there’s always something you<br> can do about it!</p>
+        <a href="#">VOLUNTEER</a>
+      </div>
+    </div>
+
+    <!-- upcoming event -->
+    <div class="upcomingevent">
+        <div class="text">
+           <h3 id="upcomingevent">Upcoming Events</h3>
+           <h3 id="kennl">Kennl Traing Class</h3>
+           <p>FR,June 11th</p>
+        </div>
+        <div class="btn">
+            <a href="#">DETAILS</a>
+            <a href="#">VIEW ALL</a>
+        </div>
+    </div>
+
+    <!-- two dog image -->
+    <div class="twoDog">        
+    </div>
+    <div class="orangeTop">
+    </div>       
+
+    <!-- Latest News and Updates -->
+    <div class="latestNews">
+        <div class="text">
+             <h3 id="updates">Latest News & Updates</h3>
+             <h3 id="see_a_video">See a Video Review of Our Cutest Pets !</h3>
+        </div>
+        <div class="video">
+            <iframe width = "80%" height = "600" src="https://www.youtube.com/embed/O8EOgg-hhvI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </video>
+        </div>
+    </div>
+
+    <!-- twoPic -->
+    <div class="twoPic">
+        <div class="leftMan">
+            <img src="pic/mt-1614-content-img11.jpg" alt="">
+            <p class="firstLine">18 Sept, by <a href="#">Jennifer Moreno</a></p>
+            <a href="#" id="New_Advance">New Advancements in the<br>Veterinary Industry</a>
+        </div>
+        <div class="rightWoman">
+            <img src="pic/mt-1614-content-img12.jpg" alt="">
+            <p class="firstLine">18 Sept, by <a href="#">Jennifer Moreno</a></p>
+            <a href="#" id="Do_Dogs">Do Dogs Hate It When You Hug<br>Them ?</a>
+        </div>
+    </div>
+    
+    <!-- four icons -->
+    <div class="fourIcons">
+        <div>
+             <img src="pic/mt-1614-content-img16.jpg" alt="">
+            <h3>1000</h3>
+            <p>Pets</p>
+        </div>
+        <div>
+            <img src="pic/mt-1614-content-img15.jpg" alt="">
+            <h3>20</h3>
+            <p>Awards</p>
+        </div>
+        <div>
+            <img src="pic/mt-1614-content-img14.jpg" alt="">
+            <h3>100</h3>
+            <p>Staffers</p>
+        </div>
+        <div>
+            <img src="pic/mt-1614-content-img13.jpg" alt="">
+            <h3>1200</h3>
+            <p>Contributers</p>
+        </div>
+    </div>
+
+    <!-- See Our Adorable Pets @ -->
+    <div id="See_Out_Adorable">
+        <h3>
+            See Our Adorable Pets @Instgram!
+        </h3>
+    </div>
+
+    <!-- below four picture -->
+    <div class="fourPics">
+        <a href="#"><img src="pic/asset 5.jpeg" alt="" width="380" height="300"></a>
+        <a href="#"><img src="pic/asset 6.jpeg" alt="" width="380" height="300"></a>
+        <a href="#"><img src="pic/asset 7.jpeg" alt="" width="380" height="300"></a>
+        <a href="#"><img src="pic/asset 8.jpeg" alt="" width="380" height="300"></a>
+    </div>
+    
+    <!-- footer -->
+    <div class="footer">
+        <div>
+            <img src="pic/logo.png" alt="">
+            <a href="#" id="Anilove">Anilove</a>
+        </div> 
+        <div>
+            <a href="#"class="link"><img src="pic/twitter.png" alt=""></a>
+            <a href="#"class="link"><img src="pic/facebook.png" alt=""></a>
+            <a href="#"class="link"><img src="pic/github.png" alt=""></a>
+            <a href="#"class="link"><img src="pic/linkedin.png" alt=""></a>
+        </div>         
+        <div>
+            <p>Paid for by Conliberal NATIONAL COMMITTEE</p>
+            <img src="https://picsum.photos/15/15/?random=15" alt=""><a href="#" id="phoneNumber">(123) 456 - 7890</a><br>
+        </div>
+        <div>
+            <img src="https://picsum.photos/15/15/?random=15" alt="">ConLiberal NATIONAL COMMITTEE 430 South Capitol Street Southeast Washington, DC 20003
+            <p>2020 © Anilove. <a href="#" id="copyRight"> All rights reserved. </a></p>
+        </div>
+    </div>
+
+    <!-- phone Icon -->
+    <div class="phoneIcon">
+        <a href="#"><i class="fas fa-phone"></i></a>
+    </div>
+</body>
+</html>

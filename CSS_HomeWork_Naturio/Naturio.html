@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naturio</title>
+    <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>
+    <style>
+        /* Reset */
+        *{
+            margin:0px;
+            padding:0px;
+            border:0px;
+        }
+
+        /* nav */
+       nav{
+           color:white;
+           background-color: rgb(154, 205, 50);
+           align-items: center;        
+           font-size: 16px;
+           font-family: sans-serif;
+       }
+       nav .container{
+           margin:auto;
+           text-align: center;
+           justify-content: space-between;
+           display: flex;
+           width:1200px;
+           padding: 15px 0px;
+       }
+       nav a{
+             text-decoration: none;
+             color:white;            
+       }
+       nav a:hover{
+        color:rgb(133, 163, 72, 0.4);
+        filter:brightness(200%);
+        transition: 0.2s;
+       }
+       .breadcrumb a+a:before {
+          padding: 15px;
+          color: white;
+          content: "|";
+       }
+
+       /* header */
+       header{
+           background-color: white;
+           font-family: sans-serif;
+       }
+       header .container{
+           margin:auto;
+           width:1200px;
+           padding: 15px 0px;
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+       }
+       header .wrap{
+           display: flex;
+       }
+       header a{
+           text-decoration: none;
+           color:rgba(110, 110, 110, 0.8);
+           padding: 0px 0px 0px 20px;
+       }
+       header a:hover{
+           color:rgb(154, 205, 50);
+           transition: 0.3s;
+       }
+
+       /* greenLeaves */
+       .greenLeaves{
+           margin: auto;
+           display: flex;
+           background-image: url(pic/asset36.png);
+           background-repeat: no-repeat;
+           background-size: 100%;
+           justify-content: center;
+           align-items: center;
+           line-height: 100px;
+       }
+       .greenLeaves .container{
+           width:1200px;
+       }
+       .greenLeaves .wrap{
+           width:600px;
+           padding: 200px 0px 200px 0px ;
+                      
+       }
+       .greenLeaves h3{
+           font-size: 82px;
+           font-family: sans-serif;
+       }
+       .greenLeaves p{
+           font-size: 30px;
+           font-family:handwriting;
+       }
+       .greenLeaves span{
+        color:rgb(154, 205, 50);
+       }
+
+       .greenLeaves a{
+           font-family:sans-serif;
+           color:white;
+           text-decoration: none;
+           background-color: rgb(154, 205, 50);
+           padding: 30px 50px;
+           transition: 1.0s;
+       }
+       .greenLeaves a:hover{   
+          box-shadow:inset 210px 0 0 0 #000000;
+          /* transition 要寫在 a tag 中，才會有回復效果 */
+       }          
+
+       /* welcome */
+       .welcome{
+           margin-top:20px;
+           text-align: center;
+           justify-content: center;
+       }
+       .welcome .container{
+           margin:auto;
+           width:1200px;
+       }
+       .welcome .wrap{
+           display: flex;
+           justify-content: space-around;
+       }
+       .welcome .wrap .items{
+          padding: 40px 15px;
+          line-height: 30px;
+          width:370px;
+       }
+       .welcome p{
+           color:rgba(110, 110, 110, 0.8);
+       }
+       .welcome h3{
+           font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+       }
+       .welcome .title{
+           text-align: center;
+           font-size:40px;
+           color:rgb(154, 205, 50);
+       }
+
+       /* pic_Group */
+       .pic_Group{
+           margin: auto;
+           width:1200px;
+           display: flex;
+           justify-content: center;
+       }
+       .pic_Group .mask{
+           width:578px;
+           height:344.78px;
+           border:1px rgba(255, 255, 255, 0.5) solid;
+           position: absolute;
+           left:-10px;
+           top:10px;
+           opacity: 0;
+           z-index: 1;
+           transition: 0.5s;
+       }
+       .pic_Group .pic{
+           position: relative;
+       }
+       .pic_Group .pic:hover .mask{
+           left:10px;
+           opacity: 1;          
+       }
+
+       /* ourProducts */
+       .ourProducts{
+           margin:50px auto;
+           text-align: center;
+           width:1230px;
+           line-height: 25px;
+           justify-content: center;
+       }
+       .ourProducts .wrap{    
+           display: flex;
+           justify-content: center;
+       }
+       .ourProducts .items{
+           margin: 0px 15px;  
+           padding: 10px 0px;
+       }
+       .ourProducts .selections a{
+           color:#ccc;
+       }
+       .ourProducts .selections a:hover{
+           color:rgb(69, 143, 50);
+           transition: 0.3s;
+       }
+       .ourProducts img{
+           width:100%;
+           border:#eee solid 0.5px;
+       }
+       .ourProducts a{
+           text-decoration: none;
+           font-family: sans-serif;
+       }
+       .ourProducts h2{
+           font-family: cursive;
+       }
+       .ourProducts .first_Line{
+           font-size:12px;
+           color: rgb(69, 143, 50);
+       }
+       .ourProducts .third_Line{
+           font-size:25px;
+           color:rgb(69, 143, 50);
+       }
+       .ourProducts del{
+           color:#ccc;
+           font-size: 12px;
+       }
+       
+       /* fruit_And_Vegetables */
+       .fruit_And_Vegetables{
+           margin:auto;
+           line-height: 90px;
+           background-image: url(pic/asset37.png);
+           background-repeat: no-repeat;
+           background-size: 100%;
+           justify-content: center;
+           align-items: center;
+           text-align: center;           
+           padding:150px 0px;
+       }
+       .fruit_And_Vegetables h2{
+           font-size: 60px;
+           font-family: sans-serif;
+       }
+       .fruit_And_Vegetables p{
+           font-size: 30px;
+       }
+       .fruit_And_Vegetables a{
+           text-decoration: none;
+           color:white;
+           background-color:rgb(154, 205, 50);
+           padding: 20px 40px;
+           transition: 1.0s;
+       }
+       .fruit_And_Vegetables a:hover{   
+          box-shadow:inset 250px 0 0 0 #000000;
+          /* transition 要寫在 a tag 中，才會有回復效果 */
+       }   
+
+       /* fruit_Heart */
+       .fruit_Heart{
+           width:1160px;
+           display: flex;
+           margin: 100px auto;
+           justify-content: center;
+           padding:15px 20px;
+       }
+       .fruit_Heart .wrap{
+              margin: 0px 15px;              
+       }
+       .fruit_Heart .item{
+           margin: 20px 0px;
+       }
+       .fruit_Heart h4{
+           font-size:20px;
+           font-family: cursive;
+           padding: 20px 0px;
+       }
+       .fruit_Heart p{
+           color:#bbb;
+           font-size:12px;
+           font-family:sans-serif;
+       }
+       
+       /* latest_From_The_Blog */
+       .latest_From_The_Blog{
+           background-image: url(pic/asset38.png);
+           background-repeat: no-repeat;
+           background-size: 100%;
+           align-items: center;
+           text-align: center;
+           font-family: sans-serif;
+           margin-top: 100px;
+       }
+       .latest_From_The_Blog .container{
+           margin: auto;
+           width:1200px;
+       }
+       .latest_From_The_Blog .wrap{
+           display: flex;
+           justify-content: center;
+       }
+       .latest_From_The_Blog .item{
+           /* width:400px; */
+           margin:0px 30px 0px 0px;
+           line-height: 30px;
+       }
+       .latest_From_The_Blog h3{
+           font-family: cursive;
+           font-size: 40px;
+           margin: 30px 0px;
+       }
+       .latest_From_The_Blog a{
+           line-height: 20px;
+           text-decoration: none;
+       }
+       .latest_From_The_Blog span{
+           color:#555;
+       }
+       .latest_From_The_Blog .first_Line{
+           color:white;
+           background-color: rgb(154, 205, 50);
+       }
+       .latest_From_The_Blog .first_Line:hover{
+           background-color: black;
+           transition: 0.3s;
+       }
+       .latest_From_The_Blog .second_Line{
+            color:#555;
+       }
+       .latest_From_The_Blog .second_Line:hover{
+            color:rgb(154, 205, 50);
+            transition: 0.3s;
+       }    
+       .latest_From_The_Blog .third_Line{
+           color:rgb(154, 205, 50);
+       }
+       .latest_From_The_Blog .third_Line:hover{
+           color:#555;
+           transition: 0.3s;
+       }
+       
+       /* gold_Cereal */
+       .gold_Cereal{
+            margin-top: 100px;
+       }
+       .gold_Cereal .container{
+            display: flex;
+            justify-content: flex-start;           
+        }
+        .gold_Cereal .item{
+            width: 380px;
+            text-align: left;
+            margin: 0px 15px;
+        }
+        .gold_Cereal img{
+           width:379.5px;
+           border:#eee solid 0.5px;
+       }
+       .gold_Cereal .first_Line{
+           color:rgb(154, 205, 50);
+           padding:0px;
+           background-color: white;
+       }
+       .gold_Cereal .first_Line:hover{
+           color:black;
+           background-color: white;
+       }
+       .gold_Cereal .third_Line{
+         font-size:20px;
+       }
+       .gold_Cereal .third_Line:hover{
+         color:rgb(154, 205, 50);
+       }
+       .gold_Cereal del{
+         color:#555;
+       }
+       
+       /* our_Clients_Testimonals */
+       .our_Clients_Testimonials{
+           margin:auto;
+           line-height: 30px;
+           background-image: url(pic/asset39.png);
+           background-repeat: no-repeat;
+           background-size: cover;
+           justify-content: center;
+           align-items: center;
+           text-align: center;
+           padding: 200px 0px;
+           color:white;       
+       }
+       .our_Clients_Testimonials .container{
+           width:1200px;
+           margin:auto;
+       }
+
+       /* subscribe */
+       .subscribe{
+           margin:auto;
+           text-align: center;
+           justify-content: center;
+       }
+       .subscribe .container{
+           width:1200px;
+           margin: auto;
+       }
+       .subscribe input{
+           width:500px;
+           padding: 10px;
+           border:#eee solid 0.5px;
+           margin:5px;
+       }
+       .subscribe a{
+           margin:5px;
+           padding:10px;
+           color:white;
+           background-color: rgb(154, 205, 50);
+           transition: 1.0s;
+       }
+       .subscribe a:hover{
+        box-shadow:inset 250px 0 0 0 #000000;
+       }
+       
+       /* footer */
+       footer{
+           padding-top: 150px;
+           padding-bottom: 100px;
+           background-image: url(pic/asset41.png);
+           background-size: 100%;
+           background-repeat: no-repeat;
+           align-items: center;
+       }
+       footer .container{
+           margin:auto;
+           width:1200px;
+           display: flex;
+           justify-content: space-between;
+       }
+       footer .item{
+           margin: 0px 15px;
+       }
+       footer .item1 a:hover{
+           color:black;
+           transition: 0.3s;
+       }
+       footer a:hover{
+           color: rgb(154, 205, 50);
+           transition: 0.3s;
+       }
+       footer h4{
+           font-family: cursive;
+           font-size: 20px;
+       }
+       footer section, a{
+           color:#aaa;
+       }
+       footer i{
+           color:rgb(154, 205, 50);
+       }
+
+       /* back_To_Top */
+       .back_To_Top{
+           color:white;
+           padding:18px 20px;
+           background-color: black;
+           border-radius: 50%;
+           position:fixed;
+           bottom:100px;
+           right:30px;
+           transition: 1.0s;
+       }
+       .back_To_Top:hover{
+           box-shadow: inset 60px 0 0 0 rgb(154, 205, 50);      
+       }
+    </style>
+</head>
+<body>
+    <!-- Navagation Bar -->
+    <nav>
+        <div class="container">
+            <div class="wrap">
+                <p>Last sale up to <strong>20% OFF.</strong> Use code <strong>"SALE70"</strong></p>
+            </div>
+            <div class="wrap breadcrumb">
+                <a href="#">COMPARE</a>
+                <a href="#">WISHLIST</a>
+                <a href="#">LOGIN</a>
+                <a href="#"><i class="fas fa-shopping-cart">&nbsp</i>CART : <script>document.write(0)</script></a>
+                <a href="#">USD, $ &nbsp<i class="fas fa-chevron-down"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="wrap">
+                <a href="#"><img src="pic/asset0.png" alt="NaturioLogo"></a>
+            </div>
+            <div class="wrap">
+                <div class="item"><a href="#">HOME</a></div>
+                <div class="item"><a href="#">ABOUT</a></div>
+                <div class="item"><a href="#">FEATURES &nbsp<i class="fas fa-chevron-down"></i></a></div>
+                <div class="item"><a href="#">BLOG &nbsp<i class="fas fa-chevron-down"></i></a></div>
+                <div class="item"><a href="#">SHOP&nbsp<i class="fas fa-chevron-down"></i></a></div>
+                <div class="item"><a href="#">CONTACTS</a></div>
+            </div>
+        </div> 
+    </header>
+
+    <!-- Green Leaves -->
+    <div class="greenLeaves">
+        <div class="container">          
+            <div class="wrap">
+                <h3>Green Leaves</h3>
+                <h3>Up To <span>20% Off</span></h3>
+                <p>Always Fresh, Crispy and Full of Vitamins</p>
+                <a href="#">ADD TO CART</a>
+            </div>
+        </div>      
+    </div>
+
+    <!-- welcome -->
+    <div class="welcome">
+        <div class="container">
+            <div class="title">
+                <h2>Welcome to our healthy farm</h2>    
+            </div>
+            <div class="wrap">
+                <div class="items">
+                    <img src="pic/asset1.png" alt="">
+                    <h3>Best Quality Products</h3>
+                    <p>We stand for providing the most fresh organic products which will serve your health and be a source of vitamins and minerals for our clients.</p>  
+                </div>
+                <div class="items">
+                    <img src="pic/asset2.png" alt="">
+                    <h3>Farmer Products</h3>
+                    <p>We work with many farms to provide you with natural products grown with love and care with no GMO or pesticides.</p>     
+                </div>
+                <div class="items">
+                    <img src="pic/asset3.png" alt="">
+                    <h3>Fast Delivery</h3>
+                    <p>We want our client to receive their fresh products as soon as possible, so we process and ship the order at once.</p>
+                </div>
+            </div>
+        </div>
+    </div>  
+       
+    <!-- pic_Group -->
+    <div class="pic_Group">
+        <div class="pic">
+            <a href="#"><img src="pic/asset4.png" alt="" width="600"></a>
+            <div class="mask"></div>
+        </div>           
+        <div class="pic">
+           <a href="#"><img src="pic/asset5.png" alt="" width="600"></a>
+           <div class="mask"></div>
+        </div>           
+    </div>
+
+
+    <!-- ourProducts -->
+    <div class="ourProducts">
+        <h2>Our Products</h2>
+        <div class="wrap selections">
+            <div class="items"><a href="#">NEW ARRIVALS</a></div>
+            <div class="items"><a href="#">ORGANIC & NATURAL</a></div>
+            <div class="items"><a href="#">THE FARM STORY</a></div>
+            <div class="items"><a href="#">PLUM CAKE</a></div>               
+        </div>
+
+        <div class="wrap">
+             <div class="items">
+                 <div><a href="#"><img src="pic/asset6.png" alt=""></a></div>
+                 <div><a href="#">
+                 <p class="first_Line">Organic, Vegetable, Fruit</p>
+                 <p>Organic Beetroot</p>
+                 <p class="third_Line"><del>4.99$</del> 2.56$</p>
+                </a></div>
+             </div>
+             <div class="items">
+                <div><a href="#"><img src="pic/asset7.png" alt=""></a></div>
+                <div><a href="#">
+                <p class="first_Line">Organic, Fruit, Packaged Meals, Baking</p>
+                <p>Organic Cauliflower</p>
+                <p class="third_Line">7.88$</p>
+               </a></div>
+            </div>
+            <div class="items">
+                <div><a href="#"><img src="pic/asset8.png" alt=""></a></div>
+                <div><a href="#">
+                <p class="first_Line">Organic, Vegetable, Fruit</p>
+                <p>Organic Fennel</p>
+                <p class="third_Line">4.81$</p>
+               </a></div>
+            </div>
+            <div class="items">
+                <div><a href="#"><img src="pic/asset9.png" alt=""></a></div>
+                <div><a href="#">
+                <p class="first_Line">Organic, Vegetable</p>
+                <p>Organic Jap Pumpkin 1kg</p>
+                <p class="third_Line">9.88$</p>
+               </a></div>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="items">
+                <div><a href="#"><img src="pic/asset10.png" alt=""></a></div>
+                <div><a href="#">
+                <p class="first_Line">Organic, Fruit, Packaged Meals</p>
+                <p>Organic Kiwi Fruit 500g</p>
+                <p class="third_Line">6.88$</p>
+               </a></div>
+            </div>
+            <div class="items">
+               <div><a href="#"><img src="pic/asset11.png" alt=""></a></div>
+               <div><a href="#">
+               <p class="first_Line">Organic, Vegetable, Fruit, Baking</p>
+               <p>Organic Mushrooms 250g</p>
+               <p class="third_Line">3.13$</p>
+              </a></div>
+           </div>
+           <div class="items">
+               <div><a href="#"><img src="pic/asset12.png" alt=""></a></div>
+               <div><a href="#">
+               <p class="first_Line">Organic, Vegetable, Fruit, Packaged Meals</p>
+               <p>Organic Parsley</p>
+               <p class="third_Line">2.25$</p>
+              </a></div>
+           </div>
+           <div class="items">
+               <div><a href="#"><img src="pic/asset13.png" alt=""></a></div>
+               <div><a href="#">
+               <p class="first_Line">Organic, Vegetable, Fruit</p>
+               <p>Organic Sebago Potatoes</p>
+               <p class="third_Line">2.50$ - 7.50$</p>
+              </a></div>
+           </div>
+        </div>
+    </div>
+
+    <!-- fruit_And_Vegetables -->
+    <div class="fruit_And_Vegetables">
+        <h2>Fruits and Vegetables</h2>
+        <p>Fresh and Delicious All Year Round!</p>
+        <a href="#">SHOP NOW!</a>
+    </div>
+    <!-- fruit_Heart -->
+    <div class="fruit_Heart">
+        <div class="wrap">
+           <img src="pic/asset29.png" alt="">
+        </div>
+        <div class="wrap">
+            <div class="item">
+                 <h4>A Source of Vitamins</h4>
+                 <p>Vegetables can be eaten either raw or cooked and play an important role in human nutrition, being mostly low in fat and carbohydrates, but high in vitamins, minerals and dietary fiber.
+                </p>
+            </div>
+            <div class="item">
+                <h4>Best Quality Products</h4>
+                <p>“We eliminated any possible pollution in our soils in order to deliver the purest organic produce to our customers’ tables.“
+                </p>
+            </div>
+            <div class="item">
+                 <h4>Best Quality Products</h4>
+                 <p>“We eliminated any possible pollution in our soils in order to deliver the purest organic produce to our customers’ tables.“</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- latest_From_The_Blog -->
+    <div class="latest_From_The_Blog">
+        <div class="container">
+            <div class="wrap">
+                <h3>Latest from the Blog</h3>
+            </div>
+            <div class="wrap">
+                <div class="item">
+                    <a href="#"><img src="pic/asset30.png" alt=""></a>
+                    <div><a href="#" class="first_Line">YOUR HEALTH</a></div>
+                    <p><a href="#" class="second_Line">Health Benefits of a Raw Food</a></p>
+                    <p><a href="#" class="third_Line">October 23, 2017</a><span> - Comments: 0 - Posted by admin</span></p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="pic/asset31.png" alt=""></a>
+                    <div><a href="#" class="first_Line">YOUR HEALTH</a></div>
+                    <p><a href="#" class="second_Line">The Anytime Snack Pack for Everyone</a></p>
+                    <p><a href="#" class="third_Line">October 23, 2017</a><span> - Comments: 1 - Posted by admin</span></p>
+                </div>
+                <div class="item">
+                    <a href="#"><img src="pic/asset32.png" alt=""></a>
+                    <div><a href="#" class="first_Line">YOUR HEALTH</a><div></div>
+                    <p><a href="#" class="second_Line">6 After-School Snacks the Kiddos Will Love</a></p>
+                    <p><a href="#" class="third_Line">October 23, 2017</a><span> - Comments: 2 - Posted by admin</span></p>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+    <!-- gold_Cereal -->
+    <div class="gold_Cereal">       
+        <div class="container">
+            <div class="item">
+                <div class="item"><h3>Gold Cereal</h3></div>
+                <div class="div"><a href="#"><img src="pic/asset6.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Organic, </a>
+                    <a href="#" class="first_Line">Vegetable, </a>
+                    <a href="#" class="first_Line">Fruit</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Organic Beetroot</a>
+                </div>
+                <p class="third_Line">
+                    <del>4.99$</del> 2.56$
+                </p>
+            </div>
+            <div class="item">
+                <div class="item"><h3>Gold Cereal</h3></div>
+                <div class="div"><a href="#"><img src="pic/asset6.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Organic, </a>
+                    <a href="#" class="first_Line">Vegetable, </a>
+                    <a href="#" class="first_Line">Fruit</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Organic Beetroot</a>
+                </div>
+                <p class="third_Line">
+                    <del>4.99$</del> 2.56$
+                </p>
+            </div>
+            <div class="item">
+                <div class="item"><h3>Gold Cereal</h3></div>
+                <div class="div"><a href="#"><img src="pic/asset6.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Organic, </a>
+                    <a href="#" class="first_Line">Vegetable, </a>
+                    <a href="#" class="first_Line">Fruit</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Organic Beetroot</a>
+                </div>
+                <p class="third_Line">
+                    <del>4.99$</del> 2.56$
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="item">
+                <div class="div"><a href="#"><img src="pic/asset7.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Organic, </a>
+                    <a href="#" class="first_Line">Fruit, </a>
+                    <a href="#" class="first_Line">Packaged Meals, </a>
+                    <a href="#" class="first_Line">Baking</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Organic Cauliflower</a>
+                </div>
+                <p class="third_Line">
+                    7.88$
+                </p>
+            </div>
+            <div class="item">
+                <div class="div"><a href="#"><img src="pic/asset7.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Organic, </a>
+                    <a href="#" class="first_Line">Fruit, </a>
+                    <a href="#" class="first_Line">Packaged Meals, </a>
+                    <a href="#" class="first_Line">Baking</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Organic Cauliflower</a>
+                </div>
+                <p class="third_Line">
+                    7.88$
+                </p>
+            </div>
+            <div class="item">
+                <div class="div"><a href="#"><img src="pic/asset7.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Organic, </a>
+                    <a href="#" class="first_Line">Fruit, </a>
+                    <a href="#" class="first_Line">Packaged Meals, </a>
+                    <a href="#" class="first_Line">Baking</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Organic Cauliflower</a>
+                </div>
+                <p class="third_Line">
+                    7.88$
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="item">
+                <div class="div"><a href="#"><img src="pic/asset14.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Vegetable, </a>
+                    <a href="#" class="first_Line">Fruit</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Bob's Red Mill</a>
+                </div>
+                <p class="third_Line">
+                    32.88$
+                </p>
+            </div>
+            <div class="item">
+                <div class="div"><a href="#"><img src="pic/asset14.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Vegetable, </a>
+                    <a href="#" class="first_Line">Fruit</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Bob's Red Mill</a>
+                </div>
+                <p class="third_Line">
+                    32.88$
+                </p>
+            </div>
+            <div class="item">
+                <div class="div"><a href="#"><img src="pic/asset14.png" alt=""></a></div>
+                <div>
+                    <a href="#" class="first_Line">Vegetable, </a>
+                    <a href="#" class="first_Line">Fruit</a>
+                </div>
+                <div>
+                    <a href="#" class="second_Line">Bob's Red Mill</a>
+                </div>
+                <p class="third_Line">
+                    32.88$
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- our_Clients_Testimonials -->
+    <div class="our_Clients_Testimonials">  
+        <div class="container">
+            <h3>Our Clients Testimonials</h3>
+            <img src="pic/asset34.png" alt="">
+            <p>66</p>
+            <p>I’d like to admit that the quality of clothes is really good. I ordered different items from different manufacturers, and they are all high-class!</p>
+            <p>Tim Diaz</p>
+            <p>Customer</p>
+        </div>            
+    </div>
+
+    <!-- subscribe -->
+    <div class="subscribe">
+        <div class="container">
+            <h3>Subscribe Newsletter</h3>
+            <div class="wrap">
+                <input type="search" placeholder="Enter your email">
+                <a href="#">SUBSCRIBE</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="item item1">
+               <h4>Categories</h4>
+               <section><a href="#">New Products</a></section>
+               <section><a href="#">Our Stores</a></section>
+               <section><a href="#">Top sellers</a></section>
+               <section><a href="#">Uncategorized</a></section>
+               <section><a href="#">Your Health</a></section>
+            </div>
+            <div class="item">
+               <h4>Information</h4>
+               <section><a href="#">Home</a></section>
+               <section><a href="#">About</a></section>
+               <section><a href="#">Blog</a></section>
+               <section><a href="#">Shop</a></section>
+               <section><a href="#">Contacts</a></section>
+            </div>
+            <div class="item">
+               <h4>My account</h4>
+               <section><a href="#">Checkout</a></section>
+               <section><a href="#">Compare</a></section>
+               <section><a href="#">My account</a></section>
+               <section><a href="#">Wishlist</a></section>
+            </div>
+            <div class="item">
+               <h4>Store Information</h4>
+               <section><i class="fas fa-map-marker-alt"></i> &nbsp Address: 4578 Marmora Road, Glasgow</section>
+               <section><i class="fas fa-phone-alt"></i> &nbsp Phones: <a href="#"> +3(800) 2345-6789:</a>
+                <a href="#">+3(800) 2345-6790</a></section>
+               <section><i class="far fa-clock"></i> &nbsp Hours: 7 Days a week from 9:00
+                am to 7:00 pm</section>
+               <section><i class="far fa-envelope"></i>&nbsp Email: <a href="#">info@demolink.org</a></section>            
+            </div>
+        </div>
+    </footer>
+
+    <!-- back_To_Top -->
+    <div class="back_To_Top">
+        <a href="#top"><i class="fas fa-arrow-up"></i></a>
+    </div>
+</body>
+</html>
+
