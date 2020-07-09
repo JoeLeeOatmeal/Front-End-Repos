@@ -1,0 +1,160 @@
+/* reset */
+*{
+    margin:0px;
+    padding:0px;
+}
+/* nav */
+nav{
+    position: relative;
+    color:#ffffff;
+    z-index: 2;
+    padding:20px 0px;
+    align-items: center;
+    justify-content: center;
+    display: flex;    
+}
+nav .nav_left img{
+    vertical-align: middle;
+}
+nav a{
+    color:#ffffff;
+    padding:10px;
+}
+nav .nav_right a:hover{
+   color:#00ff00;
+   transition: 0.3s;
+}
+nav .nav_left{
+    display: flex;
+}
+
+/* 幻燈片 */
+.owl-carousel{
+      position: absolute;
+      top:-100px;
+}
+.owl-carousel .item{ 
+     width:100%;
+     height:960px;
+     text-align: center;
+     align-items: center;    
+ }
+
+ .owl-carousel .item:nth-child(1){
+     background-image: url("https://fakeimg.pl/1200x900/#ff0000");
+     background-size: 100%;
+     background-repeat: no-repeat;
+     background-position: center;
+     align-items: center;
+ }
+
+ /* info */
+ .info{
+     margin:auto;
+     text-align: center;
+     justify-content: center;
+ }
+ .info .row{
+     margin:auto;
+     max-width: 100%;
+     display: flex;
+     justify-content: center;
+     padding:0px 150px;
+ }
+ .info .row:nth-child(even) .item_left{
+     order:2;
+}
+ .info .row .item{
+     padding:0px 15px;
+     height:400px;
+ }
+
+ /* 18 週 */
+ .eighteen{
+     color:white;
+     background-image: url("https://fakeimg.pl/1200x100/#000000");
+     text-align: center;
+     padding: 50px 100px;
+ }
+
+ /* infoTwo */
+ .infoTwo{
+     text-align: center;
+     margin: 100px auto;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+ }
+ .infoTwo .item{
+     padding:15px;
+    height:500px;
+    margin: 0px 15px;
+}
+.infoTwo .item ul li::before{
+    /* 用偽類在前面加上點點 */
+}
+
+/* lecture */
+.lecture{
+    color:white;
+    background-image: url("https://fakeimg.pl/1200x100/#000000");
+    text-align: center;
+    padding: 50px 100px;
+}
+
+/* git */
+.git{
+    display: flex;
+    text-align: center;
+    margin:auto;
+    padding:50px 50px;
+    justify-content: space-around;
+}
+.git .item{
+    padding: 20px;
+}
+
+/* ourteacher */
+.ourteacher{
+    color:white;
+    background-image: url("https://fakeimg.pl/1200x100/#000000");
+    text-align: center;
+    padding: 50px 100px;
+}
+
+/* companyicon */
+.companyicon{
+    margin:auto;
+    text-align: center;
+    border-bottom: 5px #444444 solid;
+}
+.companyicon .row{
+    margin:auto;
+    display: flex;
+    justify-content:space-around;
+}
+.companyicon .row img{
+   display:block;
+   padding: 20px;
+}
+
+/* 合作 cooperation */
+.cooperation{
+    background-color: #777777;
+    padding: 50px 0px 10px 200px;    
+}
+.cooperation a{
+   color: #000000;  
+}
+
+
+/* footer */
+footer{
+    background-color: #777777;
+    justify-content: space-between;
+    display: flex;
+    padding:0px 200px 10px 200px;
+}
+footer .item a{
+    color: #000000;  
+ }
