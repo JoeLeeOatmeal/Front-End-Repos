@@ -1,9 +1,10 @@
- /* 讓 dropdown 的 menu 只要滑鼠 hover 就會出現 */
  *{ 
     margin:0;
     padding:0;
     list-style:none;
 }
+
+/* navbar */
 nav{
     top:0;
     z-index:2;
@@ -15,26 +16,24 @@ nav{
     color:rgba(255, 255, 255, 0.8);
     background-color: rgba(0, 0, 0, 0.8);
 }
-#carouselExampleCaptions [class="carousel"] {
-    height:600px;
+.dropdown-menu .dropdown-item:hover{
+    color:rgba(255, 255, 255, 1.0);
+    background-color:rgba(0, 0, 0 , 0.5);
 }
-
 .input-group{
     background-color: black;
 }
 
-
-.container .article {
-    text-align: center;
+/* 投影片 */
+#carouselExampleCaptions [class="carousel"] {
+    height:600px;
 }
-
 #carouselExampleCaptions .carousel-caption{
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
     z-index:0;
 }
-
 
 #carouselExampleCaptions a:not([class*=carousel-control]){
     color:white;
@@ -47,17 +46,21 @@ nav{
 }
 
 
-.take_it_taken{
-    color:white;
-    padding: 100px 0px;
-    background-image: url(pic/subbnr_01.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;    
-    background-attachment: fixed;
+/* 中間小釣竿 */
+.container .article {
+    text-align: center;
 }
 
+/* video iframe */
+.embed-responsive{
+    margin-bottom: 100px;
+}
+
+
 /* productOne */
+#productOne {
+    margin-bottom:100px;
+}
 #productOne .card-text{
     color:black;
     bottom:50%;
@@ -71,9 +74,110 @@ nav{
 #productOne .card:hover .card-text{
    display: block;
 }
+#productOne .card{
+    width:300px;
+    height:300px;
+    overflow:hidden;   
+}
+#productOne .card img{
+    transform: scale(1, 1);
+    transition: all .5s ease-out;
+    width:100%;
+}
 #productOne .card:hover img{
    opacity: 0.5;
+   transform: scale(1.2, 1.2);
 }
+
+/* take_it_taken */
+.take_it_taken{
+    color:white;
+    padding: 100px 0px;
+    background-image: url(pic/subbnr_01.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;    
+    background-attachment: fixed;
+    margin-bottom: 100px;
+}
+
+/* productTwo */
+#productTwo .picContainer{
+    width:300px;
+    height:300px;
+    overflow:hidden;   
+}
+#productTwo .picContainer img{
+    transform: scale(1, 1);
+    transition: all .5s ease-out;
+    width:100%;
+}
+#productTwo .picContainer img:hover {
+   opacity: 0.5;
+   transform: scale(1.2, 1.2);
+}
+
+/* footer */
+footer{
+    font-size: 12x;
+    color: rgba(100, 100, 100, 1.0);
+    background-color: rgba(0,0,0,0.8);
+    background-size: 100;
+    display: flex;
+    justify-content: space-between;
+}
+footer h5{
+    font-size: 12px;
+    color:#ffffff;
+}
+footer p{
+    font-size: 10px;
+}
+footer a{
+    color: rgba(100, 100, 100, 1.0);
+}
+footer a:hover{
+    color:#ffffff;
+}
+footer i{
+    font-size: 25px;
+    color:#ffffff;
+}
+footer i:hover{
+    color:rgba(255, 255, 255, 0.5)
+}
+footer .item{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* bottom */
+.bottom{
+    padding: 10px 0px;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 1.0);
+}
+.bottom .row{
+    font-size: 12px;
+    display:flex;
+    align-items:center;
+    text-align: center;
+    justify-content: space-between;
+}
+.bottom p{
+    color:rgba(100, 100, 100, 1.0);
+    margin-bottom:0px;
+}
+.bottom a{
+    color: rgba(100, 100, 100, 1.0);
+}
+.bottom a:hover{
+    color:#ffffff;
+}
+
+
 
 /* side arrow */
 .arrow{
