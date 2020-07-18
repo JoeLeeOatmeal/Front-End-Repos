@@ -1,0 +1,25 @@
+/* navbar 導覽列 */
+nav{
+    top:0;
+    z-index:1;
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+    color: #fa0;
+}
+.dropdown-menu .dropdown-item{
+    color:rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.dropdown-menu .dropdown-item:hover{
+    color:rgba(255, 255, 255, 1.0);
+    background-color:rgba(0, 0, 0 , 0.5);
+}
+nav i{
+    color: rgba(255, 255, 255, 1.0);
+    font-size : 20px;
+}
+nav i:hover{
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
+}
