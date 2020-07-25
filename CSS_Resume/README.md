@@ -14,4 +14,7 @@ Author : **Joe Lee 李佳樾**
 * 圖片、圖示資源 : 
     * [fontawesome](https://fontawesome.com/)
 ## Chane Log (2020/07/18)
-* 建立搜尋列，提供前端作品、後端作品及社群平台的連結  
+* 建立搜尋列，提供前端作品、後端作品及社群平台的連結 
+* 將 browser tab 的 icon 改成我的小頭像，利用下面的方法
+    >`<link rel="shortcut icon" href="pic path">`
+* 

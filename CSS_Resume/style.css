@@ -16,10 +16,10 @@ nav{
     background-color:rgba(0, 0, 0 , 0.5);
 }
 nav i{
-    color: rgba(255, 255, 255, 1.0);
+    color: rgba(255, 255, 255, 0.8);
     font-size : 20px;
 }
 nav i:hover{
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 1.0);
     transition: 0.3s;
 }

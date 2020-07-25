@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>猜數字</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+    <div class="container">
+        <div class="options">
+            <button id="start">START</button>
+            <button id="quit" disabled>RETRY</button>
+            <button id="showAnswer" disabled>SHOW ANSWER</button>
+        </div>
+        <div id="records">
+          <p>Records :</p>
+            <!-- 這裡要填入紀錄 -->
+
+        </div>
+        <div>
+            <span>GUESS HERE : </span>
+            <input type="text" placeholder="..."
+            maxlength="4" id="input">
+            <button id="guess" disabled>CHECK !</button>
+        </div>
+    </div>  
+    <script src="main.js"></script>
+  </body>
+</html>
