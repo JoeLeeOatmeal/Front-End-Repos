@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mask Map</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- google map -->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxVhomD7qRgPimN5WWKCywXt3Q3ST3rjo&callback=initMap&libraries=&v=weekly"></script>
+    <!-- cluster -->
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+
+</head>
+<body>
+    <div id="map"></div>   
+
+    </script>
+    <script>
+        // const url = "https://raw.githubusercontent.com/knight618134/FileStorage/master/map.json"
+        const url = "https://raw.githubusercontent.com/knight618134/FileStorage/master/full_mask_map_file.json";
+        let data = [];
+        var map;
+
+        // get data
+        (function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                let response = JSON.parse(this.responseText);
+                data = response["features"];
+                createMarker(data);
+            };
+            xhr.open("GET", url);
+            xhr.send();
+        })();
+
+        // google Map callback function
+        function initMap(){
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15
+            });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    var marker = new google.maps.Marker({position: pos, map: map});
+                    map.setCenter(pos);
+                });
+            }
+        }
+
+        let createMarker = function (pharmacyArray) {
+            let markers = [];
+
+            pharmacyArray.forEach(pharmacy => {
+                // console.log(data);
+                let X = pharmacy.geometry.coordinates[1];
+                let Y = pharmacy.geometry.coordinates[0];
+
+                let pos = {
+                    lat : X,
+                    lng : Y
+                }
+                
+                let iconPath = (pharmacy.properties.mask_adult == 0 || pharmacy.properties.mask_child == 0) ? 'icon/red-cross.png':'icon/mask.png';
+                let marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    icon: iconPath,
+                });
+
+                markers.push(marker);
+
+                let contentString = `<h1>${pharmacy.properties.name}</h1>` + 
+                                    `<h3>電話 : ${pharmacy.properties.phone}</h3>` + 
+                                    `<h3>地址 : ${pharmacy.properties.address}</h3>` + 
+                                    `<h3>成人口罩剩餘數量 : <span>${pharmacy.properties.mask_adult}</span></h3>` + 
+                                    `<h3>兒童口罩剩餘數量 : <span>${pharmacy.properties.mask_child}</span></h3>` +
+                                    `<h5>更新時間 : ${pharmacy.properties.updated}</h5>`;
+
+                let infowindow = new google.maps.InfoWindow(
+                    {content : contentString}
+                );
+
+                marker.addListener('mouseover', () => infowindow.open(map, marker));
+                marker.addListener('mouseout', () => infowindow.close(map, marker)); 
+                marker.addListener('dblclick', () => window.open(`${pharmacy.properties.website}`))           
+            });
+
+            // marker cluster
+            let markerCluster = new MarkerClusterer(map, markers, {
+                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+            });
+        }
+    </script>
+</body>
+
+</html>
