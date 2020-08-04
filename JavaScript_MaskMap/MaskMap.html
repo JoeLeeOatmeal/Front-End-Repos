@@ -17,6 +17,8 @@
 </head>
 <body>
         <div class="Selections">
+            <h2>Mask Map 口罩地圖</h2>
+            
             <select name="" id="countySelect">
                
             </select>
@@ -76,8 +78,17 @@
                 pharmacyArray.filter(pharmacy => pharmacy.properties.county == county).forEach(sameCountyPharmacy => {
                     let wrap = document.createElement('div');
                     let storeName = document.createElement('h2');
+                    let adultRemain = document.createElement('h3');
+                    let childRemain = document.createElement('h3');
+
                     storeName.innerText = sameCountyPharmacy.properties.name;
+                    adultRemain.innerText = `成人口罩剩餘數量 : ${sameCountyPharmacy.properties.mask_adult}`;
+                    childRemain.innerText = `兒童口罩剩餘數量 : ${sameCountyPharmacy.properties.mask_child}`;
+
                     wrap.appendChild(storeName);
+                    wrap.appendChild(adultRemain);
+                    wrap.appendChild(childRemain);
+
                     document.getElementById('stores').appendChild(wrap);
 
                     // add EventListener to wrap
@@ -85,7 +96,7 @@
                         // 把視野座標移到點選的藥局
                         let pharmacyName = wrap.querySelector('h2').innerText;
 
-                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName);
+                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName && pharmacy.properties.county == county);
                         let pos = {
                             lat : selectedPharmacy[0].geometry.coordinates[1],
                             lng : selectedPharmacy[0].geometry.coordinates[0]
@@ -119,16 +130,26 @@
                     pharmacyArray.filter(pharmacy => pharmacy.properties.town == town && pharmacy.properties.county == document.getElementById('countySelect').value).forEach(sameTownPharmacy => {
                         let wrap = document.createElement('div');
                         let storeName = document.createElement('h2');
+                        let adultRemain = document.createElement('h3');
+                        let childRemain = document.createElement('h3');
+
                         storeName.innerText = sameTownPharmacy.properties.name;
-                        wrap.appendChild(storeName);
-                        document.getElementById('stores').appendChild(wrap);
+                        adultRemain.innerText = `成人口罩剩餘數量 : ${sameTownPharmacy.properties.mask_adult}`;
+                        childRemain.innerText = `兒童口罩剩餘數量 : ${sameTownPharmacy.properties.mask_child}`;
+
+                         wrap.appendChild(storeName);
+                         wrap.appendChild(adultRemain);
+                         wrap.appendChild(childRemain);
+                        
+                         document.getElementById('stores').appendChild(wrap);
 
                         // add EventListener to wrap
                         wrap.addEventListener('click', () => {
                         // 把視野座標移到點選的藥局
                         let pharmacyName = wrap.querySelector('h2').innerText;
  
-                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName);
+                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName && 
+                        pharmacy.properties.county == county && pharmacy.properties.town == document.getElementById('townSelect').value);
                         let pos = {
                             lat : selectedPharmacy[0].geometry.coordinates[1],
                             lng : selectedPharmacy[0].geometry.coordinates[0]
@@ -159,16 +180,26 @@
                     pharmacy.properties.town == document.getElementById('townSelect').value).forEach(sameCunliPharmacy => {
                         let wrap = document.createElement('div');
                         let storeName = document.createElement('h2');
+                        let adultRemain = document.createElement('h3');
+                        let childRemain = document.createElement('h3');
+
                         storeName.innerText = sameCunliPharmacy.properties.name;
-                        wrap.appendChild(storeName);
-                        document.getElementById('stores').appendChild(wrap);
+                        adultRemain.innerText = `成人口罩剩餘數量 : ${sameCunliPharmacy.properties.mask_adult}`;
+                        childRemain.innerText = `兒童口罩剩餘數量 : ${sameCunliPharmacy.properties.mask_child}`;
+
+                         wrap.appendChild(storeName);
+                         wrap.appendChild(adultRemain);
+                         wrap.appendChild(childRemain);
+                        
+                         document.getElementById('stores').appendChild(wrap);
 
                          // add EventListener to wrap
                         wrap.addEventListener('click', () => {
                         // 把視野座標移到點選的藥局
                         let pharmacyName = wrap.querySelector('h2').innerText;
 
-                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName);
+                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName && 
+                        pharmacy.properties.county == county && pharmacy.properties.town == document.getElementById('townSelect').value && pharmacy.properties.cunli == document.getElementById('cunliSelect').value);
                         let pos = {
                             lat : selectedPharmacy[0].geometry.coordinates[1],
                             lng : selectedPharmacy[0].geometry.coordinates[0]
@@ -177,18 +208,9 @@
                         map.zoom = 20;
                     });
                     })
-
-                   
                 })
-
             });
         };
-
-
-       
-
-
-
 
         // google Map callback function
         function initMap(){
