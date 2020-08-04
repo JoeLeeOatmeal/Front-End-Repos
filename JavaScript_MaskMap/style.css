@@ -1,5 +1,6 @@
 #map {
     height: 100%;
+    width: 80%;
 }
 
 html, body {
@@ -7,8 +8,34 @@ html, body {
     margin: 0;
     padding: 0;
 }
+body{
+    display: flex;
+}
 
 h1, span{
     color: rgba(0, 0, 255, 1.0);
 }
+
+.Selections {
+    width:20%;
+    text-align: center;
+    background-color: rgba(200, 200, 200, 0.5);
+}
+.Selections select{
+    margin:10px auto;
+    padding: 10px 20px;
+    display:block;
+    text-align: center;
+}
+.Selections #stores{
+    height:650px;
+    overflow: auto;
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.Selections #stores div{
+    background : linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))
+}
+
+
 

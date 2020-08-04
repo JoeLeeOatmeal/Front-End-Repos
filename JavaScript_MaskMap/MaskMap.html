@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mask Map</title>
-
     <link rel="stylesheet" href="style.css">
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -17,14 +16,33 @@
 
 </head>
 <body>
-    <div id="map"></div>   
+        <div class="Selections">
+            <select name="" id="countySelect">
+               
+            </select>
+            <select name="" id="townSelect">
+               
+            </select>
+            <select name="" id="cunliSelect">
+               
+            </select>
+            <div id="stores">
+                
+            </div>
+        </div>
 
+        <div id="map">
+        </div>
+       
     </script>
     <script>
         // const url = "https://raw.githubusercontent.com/knight618134/FileStorage/master/map.json"
-        const url = "https://raw.githubusercontent.com/knight618134/FileStorage/master/full_mask_map_file.json";
+        const url = "https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json";
         let data = [];
         var map;
+        let countyArray = [];
+        let districtArray = [];
+
 
         // get data
         (function () {
@@ -33,10 +51,150 @@
                 let response = JSON.parse(this.responseText);
                 data = response["features"];
                 createMarker(data);
+                createCountySelections(data);
             };
             xhr.open("GET", url);
             xhr.send();
         })();
+
+        let createCountySelections = function(pharmacyArray){
+            
+            pharmacyArray.forEach(pharmacy => {
+                if(countyArray.indexOf(pharmacy.properties.county) == -1){
+                    let item = document.createElement('option');
+                    item.innerHTML = `<option value="">${pharmacy.properties.county}</option>`;
+                    document.getElementById('countySelect').appendChild(item);
+                    countyArray.push(pharmacy.properties.county);
+                }
+            });
+
+            document.getElementById('countySelect').addEventListener('change', function(){
+                let county = this.value;
+                let townArray = [];
+                document.querySelector('#townSelect').innerHTML = "";
+                // display Pharmacy By County，要先清空
+                document.getElementById('stores').innerHTML = "";
+                pharmacyArray.filter(pharmacy => pharmacy.properties.county == county).forEach(sameCountyPharmacy => {
+                    let wrap = document.createElement('div');
+                    let storeName = document.createElement('h2');
+                    storeName.innerText = sameCountyPharmacy.properties.name;
+                    wrap.appendChild(storeName);
+                    document.getElementById('stores').appendChild(wrap);
+
+                    // add EventListener to wrap
+                    wrap.addEventListener('click', () => {
+                        // 把視野座標移到點選的藥局
+                        let pharmacyName = wrap.querySelector('h2').innerText;
+                        // console.log(pharmacyName);
+                        // console.log(wrap.querySelector('h2').innerText);
+                        // console.log(Array.isArray(pharmacyArray));
+                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName);
+                        let pos = {
+                            lat : selectedPharmacy[0].geometry.coordinates[1],
+                            lng : selectedPharmacy[0].geometry.coordinates[0]
+                        }
+                        map.setCenter(pos);
+                        map.zoom = 20;
+                    });
+                });
+
+                
+
+                // console.log(county);
+                pharmacyArray.forEach(pharmacy => {
+                    if(pharmacy.properties.county == county && townArray.indexOf(pharmacy.properties.town) == -1){
+                        let item = document.createElement('option');
+                        item.innerHTML = `<option value="">${pharmacy.properties.town}</option>`;
+                        document.getElementById('townSelect').appendChild(item);
+                        townArray.push(pharmacy.properties.town);
+                    }
+                });
+
+
+                document.getElementById('townSelect').addEventListener('change', function(){
+                    let town = this.value;
+                    let cunliArray = [];
+                    document.querySelector('#cunliSelect').innerHTML = "";
+                    console.log(town);
+                    // display Pharmacy By County，要先清空
+                    document.getElementById('stores').innerHTML = "";
+
+                    pharmacyArray.filter(pharmacy => pharmacy.properties.town == town).forEach(sameTownPharmacy => {
+                        let wrap = document.createElement('div');
+                        let storeName = document.createElement('h2');
+                        storeName.innerText = sameTownPharmacy.properties.name;
+                        wrap.appendChild(storeName);
+                        document.getElementById('stores').appendChild(wrap);
+
+                        // add EventListener to wrap
+                        wrap.addEventListener('click', () => {
+                        // 把視野座標移到點選的藥局
+                        let pharmacyName = wrap.querySelector('h2').innerText;
+                        // console.log(pharmacyName);
+                        // console.log(wrap.querySelector('h2').innerText);
+                        // console.log(Array.isArray(pharmacyArray));
+                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName);
+                        let pos = {
+                            lat : selectedPharmacy[0].geometry.coordinates[1],
+                            lng : selectedPharmacy[0].geometry.coordinates[0]
+                        }
+                        map.setCenter(pos);
+                        map.zoom = 20;
+                    });
+                    })
+
+                    
+
+                    pharmacyArray.forEach(pharmacy => {
+                        if(pharmacy.properties.town == town && cunliArray.indexOf(pharmacy.properties.cunli) == -1){
+                            let item = document.createElement('option');
+                            item.innerHTML = `<option value="">${pharmacy.properties.cunli}</option>`;
+                            document.getElementById('cunliSelect').appendChild(item);
+                            cunliArray.push(pharmacy.properties.cunli);
+                        }
+                    });
+                });
+
+                document.getElementById('cunliSelect').addEventListener('change', function(){
+                    let cunli = this.value;
+                    // display Pharmacy By County，要先清空
+                    document.getElementById('stores').innerHTML = "";
+
+                    pharmacyArray.filter(pharmacy => pharmacy.properties.cunli == cunli).forEach(sameCunliPharmacy => {
+                        let wrap = document.createElement('div');
+                        let storeName = document.createElement('h2');
+                        storeName.innerText = sameCunliPharmacy.properties.name;
+                        wrap.appendChild(storeName);
+                        document.getElementById('stores').appendChild(wrap);
+
+                         // add EventListener to wrap
+                        wrap.addEventListener('click', () => {
+                        // 把視野座標移到點選的藥局
+                        let pharmacyName = wrap.querySelector('h2').innerText;
+                        // console.log(pharmacyName);
+                        // console.log(wrap.querySelector('h2').innerText);
+                        // console.log(Array.isArray(pharmacyArray));
+                        let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName);
+                        let pos = {
+                            lat : selectedPharmacy[0].geometry.coordinates[1],
+                            lng : selectedPharmacy[0].geometry.coordinates[0]
+                        }
+                        map.setCenter(pos);
+                        map.zoom = 20;
+                    });
+                    })
+
+                   
+                })
+
+            });
+        };
+
+
+       
+
+
+
 
         // google Map callback function
         function initMap(){
