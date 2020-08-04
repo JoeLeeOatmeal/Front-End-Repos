@@ -19,22 +19,28 @@ h1, span{
 .Selections {
     width:20%;
     text-align: center;
-    background-color: rgba(200, 200, 200, 0.5);
+    background-color: rgba(220, 220, 220, 0.5);
 }
 .Selections select{
     margin:10px auto;
     padding: 10px 20px;
+    width:200px;
     display:block;
     text-align: center;
 }
 .Selections #stores{
     height:600px;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(220, 220, 220, 0.5);
 }
 
 .Selections #stores div{
-    background : rgb(255, 255, 255);
+    background : white;
+    border-radius: 10px;
+    border: 2px solid rgba(220, 220, 220, 0.5);
+}
+.Selections #stores div h3{
+    color: blue;
 }
 
 
