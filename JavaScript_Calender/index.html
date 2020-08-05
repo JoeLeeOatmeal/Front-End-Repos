@@ -10,6 +10,11 @@
 
     <title>Calender</title>
     <style>
+        *{
+            padding:0;
+            margin:0;
+            list-style: none;
+        }
         .container{
             text-align: center;
         }
@@ -17,7 +22,9 @@
             border: 2px solid black;
         }
         table td{
-            padding: 80px;
+            width: 300px;
+            height: 200px;
+            padding: 0px 0px 0px 0px;
             border:1px solid black;
         }
         table td:hover{
@@ -26,7 +33,11 @@
         h2{
             display: inline;
         }
-
+        td div{
+            background-color: rgba(0, 0, 255, 0.5);
+            border: 1px solid black;
+            border-radius: 2px;
+        }
     </style>
   </head>
   <body>
@@ -35,14 +46,14 @@
         <h1>Calender</h1>
         <div>
             <!--  <button id="">pre</button> -->
-            <button type="button" class="btn btn-primary" id="previous_year">Primary</button>
+            <button type="button" class="btn btn-primary" id="previous_year">Pre</button>
             <h2 id="yearText"></h2>
-            <button type="button" class="btn btn-primary" id="next_year">Primary</button>
+            <button type="button" class="btn btn-primary" id="next_year">Next</button>
         </div>
         <div> 
-            <button type="button" class="btn btn-primary" id="previous_month">Primary</button>  
+            <button type="button" class="btn btn-primary" id="previous_month">Pre</button>  
             <h2 id="monthText"></h2>
-            <button type="button" class="btn btn-primary" id="next_month">Primary</button>  
+            <button type="button" class="btn btn-primary" id="next_month">Next</button>  
         </div>
         <table>
             <thead>
@@ -92,10 +103,16 @@
         </div>
       </div>    
     <script>
+
     var today = new Date();
-    currentYear = today.getFullYear();
-    currentMonth = today.getMonth();
+    var currentYear = today.getFullYear();
+    var currentMonth = today.getMonth();
+    var currentDay = 0;
+    var allEvents = [];
+
+
     showCalender(currentYear, currentMonth); // 第一次產出當年當月的日曆
+    showAllEvents();
 
     function showCalender(year, month){
         document.querySelector('tbody').innerHTML = "";
@@ -118,7 +135,9 @@
                 }
                 else {
                     td = document.createElement("td");
-                    tdText = document.createTextNode(date);
+                    td.setAttribute('id', date.toString());
+                    tdText = document.createElement('p');
+                    tdText.innerText = date;
                     td.appendChild(tdText);
                     row.appendChild(td);
                     date++;
@@ -137,10 +156,12 @@
     document.getElementById('previous_year').addEventListener('click', function(){
         currentYear--;
         showCalender(currentYear, currentMonth);
+        showAllEvents();
     });
     document.getElementById('next_year').addEventListener('click', function(){
         currentYear++;
         showCalender(currentYear, currentMonth);
+        showAllEvents();
     });
     document.getElementById('previous_month').addEventListener('click', function(){
         if(currentMonth == 0){
@@ -151,6 +172,7 @@
             currentMonth--;
         }
         showCalender(currentYear, currentMonth);
+        showAllEvents();
     });
     document.getElementById('next_month').addEventListener('click', function(){
         if(currentMonth == 11){
@@ -161,25 +183,101 @@
             currentMonth++;
         }
         showCalender(currentYear, currentMonth);
+        showAllEvents();
     });
 
 
     function addTDClickEvent(td){
+
         td.addEventListener('click', function(){
+            currentDay = td.querySelector('p').innerText;
+
             td.setAttribute('data-toggle', 'modal');
             td.setAttribute('data-target', '#exampleModal');
-
-            //set button click event to modal 
-            // ? 怎麼抓到 Modal
-            
-            let modal = document.getElementById('exampleModal');
-            document.getElementById('add').addEventListener('click', function(){
-                let p = document.createElement('p');
-                p.innerText = modal.querySelector('#Title').value;
-                td.appendChild(p);
-            });
         })
     }
+
+    // 按下 更換年份、更換月份的按鈕，還有 modal btn 的增加事件按鈕都要觸發這個方法
+    function showAllEvents(){
+
+        // 要先清空 td 下面所有的 events
+        clearPreviousEvents();
+        allEvents = [];
+
+        // 抓出所有同年同月份的 local storage 資料，push 到 allEvents 裡面去
+        let currentYearString = currentYear.toString();
+        let currentMonthString = currentMonth.toString().padStart(2, '0');
+        let startDayString = '01';
+        let lastDayString = new Date(currentYear, currentMonth + 1, 0).getDate().toString();
+
+        let startIndex = +(currentYearString + currentMonthString + startDayString);
+        let endIndex = +(currentYearString + currentMonthString + lastDayString);
+
+       for(let i = startIndex; i <= endIndex; i++){
+           if(localStorage.getItem(i.toString()) != null){
+                allEvents.push(localStorage.getItem(i.toString()));
+           }
+       }
+
+       // 把 allEvents 裡面依據 day 屬性塞回去 td 裡面
+       for(let i = 0; i < allEvents.length; i++){
+           let eventsArray = JSON.parse(allEvents[i]);
+           let day = eventsArray[0].day;
+           let td = document.getElementById(day); 
+
+           for(let j = 0; j < eventsArray.length; j++){
+
+            let div = document.createElement('div');
+            div.innerText = eventsArray[j].title;
+            td.appendChild(div);
+           }
+       }
+    }
+
+
+    function clearPreviousEvents(){
+        let allTds = document.querySelectorAll('td[id]');
+        // console.log(allTds.length);
+        allTds.forEach(td => {
+            td.innerHTML = "";
+            let p = document.createElement('p');
+            p.innerText = td.id;
+            td.appendChild(p);
+        });
+    }
+
+    let btn =  document.querySelector('#exampleModal .modal-footer #add');
+    // modal button 的 click 事件
+    btn.addEventListener('click', function(){
+
+        let currentYearString = currentYear.toString();
+        let currentMonthString = currentMonth.toString().padStart(2, '0');
+        let currentDayString = currentDay.toString().padStart(2, '0');
+        let key = currentYearString + currentMonthString + currentDayString;
+
+        let modal = document.getElementById('exampleModal');
+        // console.log(modal);
+        let items = [
+            {   
+                title : document.querySelector('#exampleModal .form-group #Title').value,
+                startTime : document.querySelector('#exampleModal .form-group #StartTime').value,
+                endTime : document.querySelector('#exampleModal .form-group #EndTime').value,
+                details : modal.querySelector('#Detail').value,
+                day : currentDay,
+            }
+        ]
+        // 如果原先 key 存在要另外處理
+        if(localStorage.getItem(key) != null){
+            let existedItems = JSON.parse(localStorage.getItem(key));
+            existedItems.push(items[0]);
+            localStorage.setItem(key, JSON.stringify(existedItems));
+        }
+        else{
+            localStorage.setItem(key, JSON.stringify(items));
+        }
+        showAllEvents();
+    });
+
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
