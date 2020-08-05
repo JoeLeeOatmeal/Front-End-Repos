@@ -196,7 +196,7 @@
                         wrap.addEventListener('click', () => {
                         // 把視野座標移到點選的藥局
                         let pharmacyName = wrap.querySelector('h2').innerText;
-
+                            
                         let selectedPharmacy = pharmacyArray.filter(pharmacy => pharmacy.properties.name == pharmacyName && 
                         pharmacy.properties.county == county && pharmacy.properties.town == document.getElementById('townSelect').value && pharmacy.properties.cunli == document.getElementById('cunliSelect').value);
                         let pos = {
@@ -264,9 +264,8 @@
 
                 marker.addListener('mouseover', () => infowindow.open(map, marker));
                 marker.addListener('mouseout', () => infowindow.close(map, marker)); 
-                marker.addListener('dblclick', () => window.open(`${pharmacy.properties.website}`))           
+                marker.addListener('click', () => window.open(`${pharmacy.properties.website}`)) ;
             });
-
             // marker cluster
             let markerCluster = new MarkerClusterer(map, markers, {
                 imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'

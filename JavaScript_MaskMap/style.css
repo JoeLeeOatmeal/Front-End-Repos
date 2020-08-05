@@ -21,6 +21,7 @@ h1, span{
     text-align: center;
     background-color: rgba(220, 220, 220, 0.5);
 }
+
 .Selections select{
     margin:10px auto;
     padding: 10px 20px;
