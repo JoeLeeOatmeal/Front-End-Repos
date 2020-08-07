@@ -1,46 +1,59 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Calender</title>
     <style>
-        *{
-            padding:0;
-            margin:0;
+        * {
+            padding: 0;
+            margin: 0;
             list-style: none;
         }
-        .container{
+
+        .container {
             text-align: center;
         }
-        table{
+
+        table {
             border: 2px solid black;
         }
-        table td{
+
+        table td {
             width: 300px;
             height: 200px;
             padding: 0px 0px 0px 0px;
-            border:1px solid black;
+            border: 1px solid black;
         }
-        table td:hover{
+
+        table td:hover {
             background-color: rgba(200, 200, 200, 0.5);
         }
-        h2{
+
+        h2 {
             display: inline;
         }
-        td div{
+
+        td div {
             background-color: rgba(0, 0, 255, 0.5);
             border: 1px solid black;
             border-radius: 2px;
         }
+
+        td div:hover {
+            background-color: aqua;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
 
         <h1>Calender</h1>
@@ -50,15 +63,15 @@
             <h2 id="yearText"></h2>
             <button type="button" class="btn btn-primary" id="next_year">Next</button>
         </div>
-        <div> 
-            <button type="button" class="btn btn-primary" id="previous_month">Pre</button>  
+        <div>
+            <button type="button" class="btn btn-primary" id="previous_month">Pre</button>
             <h2 id="monthText"></h2>
-            <button type="button" class="btn btn-primary" id="next_month">Next</button>  
+            <button type="button" class="btn btn-primary" id="next_month">Next</button>
         </div>
         <table>
             <thead>
-                <td>Sun</td> 
-                <td>Mon</td> 
+                <td>Sun</td>
+                <td>Mon</td>
                 <td>Tue</td>
                 <td>Wed</td>
                 <td>Tur</td>
@@ -70,219 +83,287 @@
             </tbody>
         </table>
     </div>
-    <!-- modal template -->
+    <!-- modal add template -->
     <div class="modal" id="exampleModal" tabindex="-1">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">新增事件</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- 放一個 form -->
-            <form>
-                <div class="form-group">
-                    <label for="Title" class="col-form-label">Title : </label>
-                    <input type="text" class="form-control" id="Title">
-                    <label for="StartTime" class="col-form-label">StartTime : </label>
-                    <input type="time" class="form-control" id="StartTime">
-                    <label for="EndTime" class="col-form-label">EndTime : </label>
-                    <input type="time" class="form-control" id="EndTime">
-                    <label for="Detail">Detail : </label>
-                    <textarea class="form-control" id="Detail" placeholder="Detail Here ..."></textarea>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">新增事件</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-             </form>
+                <div class="modal-body">
+                    <!-- 放一個 form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="Title" class="col-form-label">Title : </label>
+                            <input type="text" class="form-control" id="Title">
+                            <label for="StartTime" class="col-form-label">StartTime : </label>
+                            <input type="time" class="form-control" id="StartTime">
+                            <label for="EndTime" class="col-form-label">EndTime : </label>
+                            <input type="time" class="form-control" id="EndTime">
+                            <label for="Detail">Detail : </label>
+                            <textarea class="form-control" id="Detail" placeholder="Detail Here ..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="add" data-dismiss="modal">Add to Calender</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" id="add" data-dismiss="modal">Add to Calender</button>
-            </div>
-          </div>
         </div>
-      </div>    
+    </div>
+
+    <!-- modal modify and cancel template -->
+    <div class="modal" id="exampleModal2" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">修改 或 刪除 事件</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- 放一個 form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="Title" class="col-form-label">Title : </label>
+                            <input type="text" class="form-control" id="Title">
+                            <label for="StartTime" class="col-form-label">StartTime : </label>
+                            <input type="time" class="form-control" id="StartTime">
+                            <label for="EndTime" class="col-form-label">EndTime : </label>
+                            <input type="time" class="form-control" id="EndTime">
+                            <label for="Detail">Detail : </label>
+                            <textarea class="form-control" id="Detail" placeholder="Detail Here ..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="modify" data-dismiss="modal">修改</button>
+                    <button type="button" class="btn btn-danger" id="delete" data-dismiss="modal">刪除</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
 
-    var today = new Date();
-    var currentYear = today.getFullYear();
-    var currentMonth = today.getMonth();
-    var currentDay = 0;
-    var allEvents = [];
+        var today = new Date();
+        var currentYear = today.getFullYear();
+        var currentMonth = today.getMonth();
+        var currentDay = 0;
+        var allEvents = [];
 
 
-    showCalender(currentYear, currentMonth); // 第一次產出當年當月的日曆
-    showAllEvents();
+        showCalender(currentYear, currentMonth); // 第一次產出當年當月的日曆
+        showAllEvents();
 
-    function showCalender(year, month){
-        document.querySelector('tbody').innerHTML = "";
-        let startDay = new Date(year, month, 1).getDay(); // 這個月從禮拜己開始的
-        let daysInThisMonth = new Date(year, month + 1, 0).getDate(); // 這個月有幾天   
+        function showCalender(year, month) {
+            document.querySelector('tbody').innerHTML = "";
+            let startDay = new Date(year, month, 1).getDay(); // 這個月從禮拜己開始的
+            let daysInThisMonth = new Date(year, month + 1, 0).getDate(); // 這個月有幾天   
 
-        let date = 1;    
-        for (let i = 0; i <= 6; i++) { // 一個月最多六周
-            let row = document.createElement("tr");
+            let date = 1;
+            for (let i = 0; i <= 6; i++) { // 一個月最多六周
+                let row = document.createElement("tr");
 
-            for (let j = 0; j < 7; j++) { // 0 - 6
-                if (i == 0 && j < startDay) { // 第一列且不是當月開
-                    td = document.createElement("td");
-                    tdText = document.createTextNode("");
-                    td.appendChild(tdText);
-                    row.appendChild(td);
+                for (let j = 0; j < 7; j++) { // 0 - 6
+                    if (i == 0 && j < startDay) { // 第一列且不是當月開
+                        td = document.createElement("td");
+                        tdText = document.createTextNode("");
+                        td.appendChild(tdText);
+                        row.appendChild(td);
+                    }
+                    else if (date > daysInThisMonth) {
+                        break;
+                    }
+                    else {
+                        td = document.createElement("td");
+                        td.setAttribute('id', date.toString());
+                        tdText = document.createElement('p');
+                        tdText.innerText = date;
+                        td.appendChild(tdText);
+                        row.appendChild(td);
+                        date++;
+
+                        // add modal event to each td, and then add event listener to modal button
+                        addTDClickEvent(td);
+                    }
                 }
-                else if (date > daysInThisMonth) {
-                    break;
-                }
-                else {
-                    td = document.createElement("td");
-                    td.setAttribute('id', date.toString());
-                    tdText = document.createElement('p');
-                    tdText.innerText = date;
-                    td.appendChild(tdText);
-                    row.appendChild(td);
-                    date++;
-
-                    // add modal event to each td, and then add event listener to modal button
-                    addTDClickEvent(td);
-                }   
+                document.querySelector('tbody').appendChild(row);
             }
-            document.querySelector('tbody').appendChild(row);
+            document.getElementById('yearText').innerText = `Year : ${year}`;
+            document.getElementById('monthText').innerText = `Month : ${month + 1}`;
         }
-        document.getElementById('yearText').innerText = `Year : ${year}`;
-        document.getElementById('monthText').innerText = `Month : ${month + 1}`;
-    }
 
-    // set event Handler to button
-    document.getElementById('previous_year').addEventListener('click', function(){
-        currentYear--;
-        showCalender(currentYear, currentMonth);
-        showAllEvents();
-    });
-    document.getElementById('next_year').addEventListener('click', function(){
-        currentYear++;
-        showCalender(currentYear, currentMonth);
-        showAllEvents();
-    });
-    document.getElementById('previous_month').addEventListener('click', function(){
-        if(currentMonth == 0){
+        // set event Handler to button
+        document.getElementById('previous_year').addEventListener('click', function () {
             currentYear--;
-            currentMonth = 11;
-        }
-        else{
-            currentMonth--;
-        }
-        showCalender(currentYear, currentMonth);
-        showAllEvents();
-    });
-    document.getElementById('next_month').addEventListener('click', function(){
-        if(currentMonth == 11){
+            showCalender(currentYear, currentMonth);
+            showAllEvents();
+        });
+        document.getElementById('next_year').addEventListener('click', function () {
             currentYear++;
-            currentMonth = 0;
-        }
-        else{
-            currentMonth++;
-        }
-        showCalender(currentYear, currentMonth);
-        showAllEvents();
-    });
+            showCalender(currentYear, currentMonth);
+            showAllEvents();
+        });
+        document.getElementById('previous_month').addEventListener('click', function () {
+            if (currentMonth == 0) {
+                currentYear--;
+                currentMonth = 11;
+            }
+            else {
+                currentMonth--;
+            }
+            showCalender(currentYear, currentMonth);
+            showAllEvents();
+        });
+        document.getElementById('next_month').addEventListener('click', function () {
+            if (currentMonth == 11) {
+                currentYear++;
+                currentMonth = 0;
+            }
+            else {
+                currentMonth++;
+            }
+            showCalender(currentYear, currentMonth);
+            showAllEvents();
+        });
 
 
-    function addTDClickEvent(td){
-
-        td.addEventListener('click', function(){
-            currentDay = td.querySelector('p').innerText;
-
+        function addTDClickEvent(td) {
             td.setAttribute('data-toggle', 'modal');
             td.setAttribute('data-target', '#exampleModal');
-        })
-    }
 
-    // 按下 更換年份、更換月份的按鈕，還有 modal btn 的增加事件按鈕都要觸發這個方法
-    function showAllEvents(){
+            td.addEventListener('click', function () {
+                currentDay = td.querySelector('p').innerText;      
+            })
+        }
 
-        // 要先清空 td 下面所有的 events
-        clearPreviousEvents();
-        allEvents = [];
+        // 按下 更換年份、更換月份的按鈕，還有 modal btn 的增加事件按鈕都要觸發這個方法
+        function showAllEvents() {
 
-        // 抓出所有同年同月份的 local storage 資料，push 到 allEvents 裡面去
-        let currentYearString = currentYear.toString();
-        let currentMonthString = currentMonth.toString().padStart(2, '0');
-        let startDayString = '01';
-        let lastDayString = new Date(currentYear, currentMonth + 1, 0).getDate().toString();
+            // 要先清空 td 下面所有的 events
+            clearPreviousEvents();
+            allEvents = [];
 
-        let startIndex = +(currentYearString + currentMonthString + startDayString);
-        let endIndex = +(currentYearString + currentMonthString + lastDayString);
+            // 抓出所有同年同月份的 local storage 資料，push 到 allEvents 裡面去
+            let currentYearString = currentYear.toString();
+            let currentMonthString = currentMonth.toString().padStart(2, '0');
+            let startDayString = '01';
+            let lastDayString = new Date(currentYear, currentMonth + 1, 0).getDate().toString();
 
-       for(let i = startIndex; i <= endIndex; i++){
-           if(localStorage.getItem(i.toString()) != null){
-                allEvents.push(localStorage.getItem(i.toString()));
-           }
-       }
+            let startIndex = +(currentYearString + currentMonthString + startDayString);
+            let endIndex = +(currentYearString + currentMonthString + lastDayString);
 
-       // 把 allEvents 裡面依據 day 屬性塞回去 td 裡面
-       for(let i = 0; i < allEvents.length; i++){
-           let eventsArray = JSON.parse(allEvents[i]);
-           let day = eventsArray[0].day;
-           let td = document.getElementById(day); 
-
-           for(let j = 0; j < eventsArray.length; j++){
-
-            let div = document.createElement('div');
-            div.innerText = eventsArray[j].title;
-            td.appendChild(div);
-           }
-       }
-    }
-
-
-    function clearPreviousEvents(){
-        let allTds = document.querySelectorAll('td[id]');
-        // console.log(allTds.length);
-        allTds.forEach(td => {
-            td.innerHTML = "";
-            let p = document.createElement('p');
-            p.innerText = td.id;
-            td.appendChild(p);
-        });
-    }
-
-    let btn =  document.querySelector('#exampleModal .modal-footer #add');
-    // modal button 的 click 事件
-    btn.addEventListener('click', function(){
-
-        let currentYearString = currentYear.toString();
-        let currentMonthString = currentMonth.toString().padStart(2, '0');
-        let currentDayString = currentDay.toString().padStart(2, '0');
-        let key = currentYearString + currentMonthString + currentDayString;
-
-        let modal = document.getElementById('exampleModal');
-        // console.log(modal);
-        let items = [
-            {   
-                title : document.querySelector('#exampleModal .form-group #Title').value,
-                startTime : document.querySelector('#exampleModal .form-group #StartTime').value,
-                endTime : document.querySelector('#exampleModal .form-group #EndTime').value,
-                details : modal.querySelector('#Detail').value,
-                day : currentDay,
+            for (let i = startIndex; i <= endIndex; i++) {
+                if (localStorage.getItem(i.toString()) != null) {
+                    allEvents.push(localStorage.getItem(i.toString()));
+                }
             }
-        ]
-        // 如果原先 key 存在要另外處理
-        if(localStorage.getItem(key) != null){
-            let existedItems = JSON.parse(localStorage.getItem(key));
-            existedItems.push(items[0]);
-            localStorage.setItem(key, JSON.stringify(existedItems));
+
+            // allEvents 是所有當月的事件陣列
+            // 把 allEvents 裡面依據 day 屬性塞回去 td 裡面
+            for (let i = 0; i < allEvents.length; i++) {
+                let eventsArray = JSON.parse(allEvents[i]);
+                let day = eventsArray[0].day;
+                let td = document.getElementById(day);
+
+                for (let j = 0; j < eventsArray.length; j++) {
+
+                    let div = document.createElement('div');
+                    div.innerText = eventsArray[j].title;  //eventArray[j] 是符合日期的物件
+
+                    //加入 div 的 click 事件
+                    div.addEventListener('click', function (e) {
+                        
+                        $('#exampleModal2').modal('show'); //BootStrap 的方法
+                        e.stopPropagation();
+                    });
+                    document.querySelector('#exampleModal2');
+                    td.appendChild(div);
+                }
+            }
         }
-        else{
-            localStorage.setItem(key, JSON.stringify(items));
+
+
+        function clearPreviousEvents() {
+            let allTds = document.querySelectorAll('td[id]');
+            // console.log(allTds.length);
+            allTds.forEach(td => {
+                td.innerHTML = "";
+                let p = document.createElement('p');
+                p.innerText = td.id;
+                td.appendChild(p);
+            });
         }
-        showAllEvents();
-    });
+
+        let btn = document.querySelector('#exampleModal .modal-footer #add');
+        // modal button 的 click 事件
+        btn.addEventListener('click', function () {
+
+            let currentYearString = currentYear.toString();
+            let currentMonthString = currentMonth.toString().padStart(2, '0');
+            let currentDayString = currentDay.toString().padStart(2, '0');
+            let key = currentYearString + currentMonthString + currentDayString;
+
+            let modal = document.getElementById('exampleModal');
+            // console.log(modal);
+            let items = [
+                {
+                    title: document.querySelector('#exampleModal .form-group #Title').value,
+                    startTime: document.querySelector('#exampleModal .form-group #StartTime').value,
+                    endTime: document.querySelector('#exampleModal .form-group #EndTime').value,
+                    details: modal.querySelector('#Detail').value,
+                    day: currentDay,
+                }
+            ]
+            // 如果原先 key 存在要另外處理
+            if (localStorage.getItem(key) != null) {
+                let existedItems = JSON.parse(localStorage.getItem(key));
+                existedItems.push(items[0]);
+                localStorage.setItem(key, JSON.stringify(existedItems));
+            }
+            else {
+                localStorage.setItem(key, JSON.stringify(items));
+            }
+            showAllEvents();
+        });
+
+        // 建立修改按鈕的 click 事件
+        let  btnMod = document.querySelector('#exampleModal2 .modal-footer #modify');
+        btnMod.addEventListener('click', function(){
+
+            let currentYearString = currentYear.toString();
+            let currentMonthString = currentMonth.toString().padStart(2, '0');
+            let currentDayString = currentDay.toString().padStart(2, '0');
+            let key = currentYearString + currentMonthString + currentDayString;
+
+            let modal = document.getElementById('exampleModal2');
+            let localStorageBeforeModified = JSON.parse(localStorage.getItem(key));
+            localStorageBeforeModified.findIndexOf(title);
+            //console.log(modal);
+            let items = [
+                {
+
+                }
+            ]
+
+        });
 
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
 </html>
