@@ -28,8 +28,17 @@ table, th, td{
     text-align: center;
     padding : 80px;
     border: 2px solid rgba(0, 0, 0, 0.5);
+    transition : 0.3s;
 }
-
+td div{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    background-color: rgb(255, 136, 0);
+}
+td div span[class="title"]{
+    flex-grow: 1;
+}
 table th:hover{
     background-color: rgba(0, 0, 0, 0.5);
 }
