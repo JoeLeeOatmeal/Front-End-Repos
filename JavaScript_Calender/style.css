@@ -1,67 +1,61 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*{
+    /* reset */
+    margin:0;
+    padding:0;
     list-style: none;
 }
 
 body{
-    background: linear-gradient(to right top, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0));
-    height:100%;
+    background: linear-gradient(to right top, rgb(126, 216, 41), rgb(41, 216, 164));
+    background-repeat: no-repeat;
 }
-
-.container>div{
-    background-color: rgb(229, 255, 0);
-    border-left: 2px solid rgba(0, 0, 0, 0.5);
-    border-right: 2px solid rgba(0, 0, 0, 0.5);
+.container{
+    margin:auto;
 }
-
 .row{
+    margin: 5px auto;
+    display: flex;
     justify-content: space-around;
 }
-
-button{
-    padding: 5px 20px;
-}
-
 table, th, td{
+    transition: 0.5s;
     text-align: center;
-    padding : 80px;
-    border: 2px solid rgba(0, 0, 0, 0.5);
-    transition : 0.3s;
+    border: 2px solid white;
+}
+p{
+    margin:0;
+}
+td{
+    width:200px;
+    height:100px;
+}
+td:hover{
+    background-color: rgba(230, 230, 230, 0.5);
 }
 td div{
-    justify-content: space-between;
-    align-items: center;
+    
+    border: 1px solid black;
     display: flex;
-    background-color: rgb(255, 136, 0);
+    justify-content: space-between;
+    margin: 1px auto;
+    width:90%;
+    background-color: white;
+    padding: 2px;
+    position: relative;
 }
-td div span[class="title"]{
+td div span{
     flex-grow: 1;
+    vertical-align: center;
+    position: relative;
+    top: 7px;
 }
-table th:hover{
-    background-color: rgba(0, 0, 0, 0.5);
+button{
+    margin: auto 1px;
+    padding: 5px 10px;
+    background: linear-gradient(to right top, rgb(126, 216, 41), rgb(41, 216, 164));
+    box-shadow: 2px 1px black 1px;
+    border-radius: 8px;
 }
-
-td:first-child:hover{
-    background-color: rgba(255, 0, 0, 1.0);
-}
-
-td:nth-child(2):hover{
-    background-color:rgb(255, 136, 0);
-}
-td:nth-child(3):hover{
-    background-color:rgb(229, 255, 0);
-}
-td:nth-child(4):hover{
-    background-color:rgb(0, 255, 34);
-}
-td:nth-child(5):hover{
-    background-color:rgb(47, 0, 255);
-}
-td:nth-child(6):hover{
-    background-color:rgb(162, 0, 255);
-}
-td:nth-child(7):hover{
-    background-color:rgb(255, 0, 179);
+.row button:hover{
+    background-color: black;
 }
